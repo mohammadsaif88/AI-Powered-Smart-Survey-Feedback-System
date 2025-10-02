@@ -1,0 +1,19 @@
+<vxml version="2.1">
+  <form id="shipmentUpdate">
+    <field name="status">
+      <prompt>Please enter the shipment status: 1 for Picked, 2 for In Transit, 3 for Delivered.</prompt>
+      <grammar type="application/srgs+xml">
+        <rule id="status" scope="public">
+          <one-of>
+            <item>1</item>
+            <item>2</item>
+            <item>3</item>
+          </one-of>
+        </rule>
+      </grammar>
+    </field>
+    <filled>
+      <submit next="ShipmentHandler.aspx" method="post" namelist="status"/>
+    </filled>
+  </form>
+</vxml>
