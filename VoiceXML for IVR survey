@@ -1,0 +1,21 @@
+<vxml version="2.1">
+  <form id="surveyForm">
+    <field name="response">
+      <prompt>Welcome to the survey. Please enter your rating from 1 to 5.</prompt>
+      <grammar type="application/srgs+xml">
+        <rule id="rating" scope="public">
+          <one-of>
+            <item>1</item>
+            <item>2</item>
+            <item>3</item>
+            <item>4</item>
+            <item>5</item>
+          </one-of>
+        </rule>
+      </grammar>
+    </field>
+    <filled>
+      <submit next="SurveyHandler.aspx" method="post" namelist="response"/>
+    </filled>
+  </form>
+</vxml>
