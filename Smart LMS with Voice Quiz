@@ -1,0 +1,16 @@
+protected void btnSubmitQuiz_Click(object sender, EventArgs e)
+{
+    string userAnswer = txtAnswer.Text;
+    int questionId = Convert.ToInt32(ViewState["QuestionId"]);
+    string connStr = "Server=.;Database=LMSDB;Trusted_Connection=True;";
+
+    using(SqlConnection conn = new SqlConnection(connStr))
+    {
+        conn.Open();
+        SqlCommand cmd = new SqlCommand(
+            "INSERT INTO QuizResponses (QuestionId, Answer) VALUES (@qid, @answer)", conn);
+        cmd.Parameters.AddWithValue("@qid", questionId);
+        cmd.Parameters.AddWithValue("@answer", userAnswer);
+        cmd.ExecuteNonQuery();
+    }
+}
