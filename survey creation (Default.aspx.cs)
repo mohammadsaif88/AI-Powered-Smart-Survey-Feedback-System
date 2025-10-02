@@ -1,0 +1,22 @@
+using System;
+using System.Data.SqlClient;
+
+public partial class Default : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e) { }
+
+    protected void btnSubmit_Click(object sender, EventArgs e)
+    {
+        string surveyResponse = txtResponse.Text;
+        string connectionString = "Server=.;Database=SurveyDB;Trusted_Connection=True;";
+
+        using (SqlConnection conn = new SqlConnection(connectionString))
+        {
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(
+                "INSERT INTO SurveyResponses (ResponseText) VALUES (@response)", conn);
+            cmd.Parameters.AddWithValue("@response", surveyResponse);
+            cmd.ExecuteNonQuery();
+        }
+    }
+}
