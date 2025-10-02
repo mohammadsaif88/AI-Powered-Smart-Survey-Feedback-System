@@ -1,0 +1,16 @@
+protected void btnUpdate_Click(object sender, EventArgs e)
+{
+    string shipmentId = txtShipmentId.Text;
+    string status = ddlStatus.SelectedValue;
+    string connStr = "Server=.;Database=SupplyChainDB;Trusted_Connection=True;";
+
+    using(SqlConnection conn = new SqlConnection(connStr))
+    {
+        conn.Open();
+        SqlCommand cmd = new SqlCommand(
+            "UPDATE Shipments SET Status=@status WHERE ShipmentId=@id", conn);
+        cmd.Parameters.AddWithValue("@status", status);
+        cmd.Parameters.AddWithValue("@id", shipmentId);
+        cmd.ExecuteNonQuery();
+    }
+}
