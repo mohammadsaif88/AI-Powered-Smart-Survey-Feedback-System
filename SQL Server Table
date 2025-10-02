@@ -1,0 +1,9 @@
+CREATE DATABASE SurveyDB;
+GO
+USE SurveyDB;
+GO
+CREATE TABLE SurveyResponses (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    ResponseText NVARCHAR(500),
+    CreatedAt DATETIME DEFAULT GETDATE()
+);
