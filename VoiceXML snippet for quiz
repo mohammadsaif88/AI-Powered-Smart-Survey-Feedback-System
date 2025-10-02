@@ -1,0 +1,19 @@
+<vxml version="2.1">
+  <form id="voiceQuiz">
+    <field name="quizAnswer">
+      <prompt>What is 2 plus 2? Press 1 for 3, 2 for 4, 3 for 5.</prompt>
+      <grammar type="application/srgs+xml">
+        <rule id="answer" scope="public">
+          <one-of>
+            <item>1</item>
+            <item>2</item>
+            <item>3</item>
+          </one-of>
+        </rule>
+      </grammar>
+    </field>
+    <filled>
+      <submit next="QuizHandler.aspx" method="post" namelist="quizAnswer"/>
+    </filled>
+  </form>
+</vxml>
